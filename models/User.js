@@ -1,4 +1,3 @@
-// models/User.js
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
@@ -24,7 +23,11 @@ const userSchema = new mongoose.Schema({
   loginAttempts: { type: Number, default: 0 },
 
   balance: { type: Number, default: 0 },
-  createdAt: { type: Date, default: Date.now }
+  createdAt: { type: Date, default: Date.now },
+
+  // 🔐 OTP-related fields
+  otp: { type: String },
+  otpExpiresAt: { type: Date }
 });
 
 module.exports = mongoose.model('User', userSchema);

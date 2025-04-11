@@ -20,6 +20,7 @@ router.post('/forgot-userid', authController.forgotUserId);
 router.post('/reset-password', authController.resetPassword);
 router.post('/forgot-password', authController.forgotPassword);
 router.post('/reset-password/:userId', authController.resetPassword);
+router.post('/verify-otp/:userId', authController.verifyOtp);
 
 module.exports = router;
 

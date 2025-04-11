@@ -23,3 +23,19 @@ exports.approveUser = async (req, res) => {
 
   res.redirect('/admin/requests');
 };
+exports.verifyOtp = async (req, res) => {
+  const { userId } = req.params;
+  const { otp } = req.body;
+
+  const user = await User.findOne({ userId });
+
+  if (!user || user.otp !== otp || new Date() > user.otpExpiresAt) {
+    return res.send('Invalid or expired OTP');
+  }
+
+  user.otp = null;
+  user.otpExpiresAt = null;
+  await user.save();
+
+  res.redirect(`/reset-password/${userId}`);
+};

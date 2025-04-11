@@ -72,12 +72,25 @@ exports.forgotUserId = async (req, res) => {
   }
 };
 
+
+// controllers/authController.js
 exports.forgotPassword = async (req, res) => {
   const { userId } = req.body;
-  // Simulate OTP verification
+
   const user = await User.findOne({ userId });
   if (!user) return res.send('Invalid user ID');
-  res.redirect(`/reset-password/${userId}`);
+
+  // Generate 6-digit OTP
+  const otp = Math.floor(100000 + Math.random() * 900000).toString();
+
+  // Set OTP and expiry (10 mins)
+  user.otp = otp;
+  user.otpExpiresAt = new Date(Date.now() + 10 * 60 * 1000);
+  await user.save();
+
+  console.log(`🔐 OTP for ${userId}: ${otp}`); // Simulated OTP output
+
+  res.render('verify-otp', { userId });
 };
 
 exports.resetPassword = async (req, res) => {
@@ -90,6 +103,22 @@ exports.resetPassword = async (req, res) => {
   await User.updateOne({ userId }, { password: hashed, isLocked: false, loginAttempts: 0 });
 
   res.redirect('/login');
+};
+exports.verifyOtp = async (req, res) => {
+  const { userId } = req.params;
+  const { otp } = req.body;
+
+  const user = await User.findOne({ userId });
+
+  if (!user || user.otp !== otp || new Date() > user.otpExpiresAt) {
+    return res.send('Invalid or expired OTP');
+  }
+
+  user.otp = null;
+  user.otpExpiresAt = null;
+  await user.save();
+
+  res.redirect(`/reset-password/${userId}`);
 };
 
 exports.accountLockedPage = (req, res) => {
