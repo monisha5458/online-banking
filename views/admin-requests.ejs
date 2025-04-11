@@ -1,0 +1,20 @@
+
+<h2>Pending Account Requests</h2>
+<% if (users.length === 0) { %>
+  <p>No pending requests</p>
+<% } else { %>
+  <table border="1">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Approve</th>
+    </tr>
+    <% users.forEach(user => { %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><a href="/admin/approve/<%= user._id %>">Approve</a></td>
+      </tr>
+    <% }) %>
+  </table>
+<% } %>

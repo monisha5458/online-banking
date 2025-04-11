@@ -1,0 +1,29 @@
+<h2>Account Statement</h2>
+<form method="GET" action="/dashboard/account-statement">
+  <label>From:</label>
+  <input type="date" name="from" required />
+  <label>To:</label>
+  <input type="date" name="to" required />
+  <button type="submit">Filter</button>
+</form>
+
+<table border="1">
+  <tr>
+    <th>To</th>
+    <th>Amount</th>
+    <th>Mode</th>
+    <th>Status</th>
+    <th>Date</th>
+  </tr>
+  <% transactions.forEach(t => { %>
+    <tr>
+      <td><%= t.toAccountNumber %></td>
+      <td><%= t.amount %></td>
+      <td><%= t.mode %></td>
+      <td><%= t.status %></td>
+      <td><%= t.createdAt.toDateString() %></td>
+    </tr>
+  <% }) %>
+</table>
+
+<a href="/dashboard">Back to Dashboard</a>

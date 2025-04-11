@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register for Internet Banking</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #e3f2fd, #bbdefb);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .register-card {
+      background-color: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      width: 400px;
+      text-align: center;
+    }
+
+    .register-card img {
+      width: 70px;
+      margin-bottom: 15px;
+    }
+
+    h2 {
+      color: #1976d2;
+      margin-bottom: 25px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    label {
+      margin: 8px 0 4px;
+      font-weight: 500;
+      color: #333;
+    }
+
+    input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 15px;
+    }
+
+    button {
+      padding: 12px;
+      background-color: #1976d2;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #125ca1;
+    }
+  </style>
+</head>
+<body>
+  <div class="register-card">
+    <img src="https://cdn-icons-png.flaticon.com/512/2920/2920265.png" alt="Bank Icon">
+    <h2>🏦 Register for Internet Banking</h2>
+    <form method="POST" action="/register">
+      <label>Account Number:</label>
+      <input type="text" name="accountNumber" required />
+
+      <label>User ID:</label>
+      <input type="text" name="userId" required />
+
+      <label>Password:</label>
+      <input type="password" name="password" required />
+
+      <label>Confirm Password:</label>
+      <input type="password" name="confirmPassword" required />
+
+      <label>Transaction Password:</label>
+      <input type="password" name="transactionPassword" required />
+
+      <button type="submit">Register</button>
+    </form>
+  </div>
+</body>
+</html>

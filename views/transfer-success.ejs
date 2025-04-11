@@ -1,0 +1,7 @@
+<h2>Transfer Successful ✅</h2>
+<p>To: <%= transaction.toAccountNumber %></p>
+<p>Amount: BDT <%= transaction.amount %></p>
+<p>Mode: <%= transaction.mode %></p>
+<p>Status: <%= transaction.status %></p>
+<p>Date: <%= transaction.createdAt.toDateString() %></p>
+<a href="/dashboard">Go to Dashboard</a>

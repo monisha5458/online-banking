@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Open New Bank Account</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #e3f2fd, #bbdefb);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .form-card {
+      background-color: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      width: 500px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #1976d2;
+      margin-bottom: 25px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-weight: 500;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    input {
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      padding: 12px;
+      background-color: #1976d2;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #125ca1;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-card">
+    <h2>🏦 Open New Bank Account</h2>
+    <form method="POST" action="/admin/open-account">
+      <label>Name:</label>
+      <input type="text" name="name" required />
+
+      <label>Email:</label>
+      <input type="email" name="email" required />
+
+      <label>Mobile:</label>
+      <input type="text" name="mobile" required />
+
+      <label>Date of Birth:</label>
+      <input type="date" name="dob" required />
+
+      <label>Aadhaar Number:</label>
+      <input type="text" name="aadhar" required />
+
+      <label>Residential Address:</label>
+      <input type="text" name="residential" required />
+
+      <label>Permanent Address:</label>
+      <input type="text" name="permanent" required />
+
+      <label>Occupation:</label>
+      <input type="text" name="occupation" />
+
+      <button type="submit">Submit Request</button>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<h2>Transfer Funds</h2>
+<form method="POST" action="/transfer/fund-transfer">
+  <label>Select Payee:</label>
+  <select name="payeeAccountNumber" required>
+    <% payees.forEach(p => { %>
+      <option value="<%= p.beneficiaryAccountNumber %>">
+        <%= p.beneficiaryName %> (<%= p.nickname || 'No nickname' %>)
+      </option>
+    <% }) %>
+  </select><br/>
+
+  <label>Amount:</label>
+  <input type="number" name="amount" required /><br/>
+
+  <label>Transfer Mode:</label>
+  <select name="mode" required>
+    <option value="NEFT">NEFT</option>
+    <option value="RTGS">RTGS</option>
+    <option value="IMPS">IMPS</option>
+  </select><br/>
+
+  <button type="submit">Transfer</button>
+</form>
